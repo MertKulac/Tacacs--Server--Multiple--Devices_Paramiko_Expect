@@ -1,0 +1,58 @@
+sys
+hwtacacs-server template tacacs
+hwtacacs-server authentication 192.168.0.2 secondary
+hwtacacs-server authorization 192.168.0.2 secondary
+hwtacacs-server accounting 192.168.0.2 secondary
+q
+hwtacacs-server template tacacs
+hwtacacs-server authentication 192.168.0.1
+hwtacacs-server authorization 192.168.0.1
+hwtacacs-server accounting 192.168.0.1
+q
+
+sys
+hwtacacs-server template tacacs
+undo hwtacacs-server authentication secondary ip-address
+undo hwtacacs-server authorization secondary ip-address
+undo hwtacacs-server accounting secondary ip-address
+undo hwtacacs-server authentication third ip-address
+undo hwtacacs-server authorization third ip-address
+undo hwtacacs-server accounting third ip-address
+hwtacacs-server authentication 192.168.0.1 vpn-instance routermngt secondary
+hwtacacs-server authorization 192.168.0.1 vpn-instance routermngt secondary
+hwtacacs-server accounting 192.168.0.1 vpn-instance routermngt secondary
+hwtacacs-server authentication 192.168.0.2 vpn-instance routermngt third
+hwtacacs-server authorization 192.168.0.2 vpn-instance routermngt third
+hwtacacs-server accounting 192.168.0.2 vpn-instance routermngt third
+
+en
+conf t
+ip access-list standard VTY_ACL
+permit 192.168.0.1 0.0.0.0
+permit 192.168.0.2 0.0.0.0
+exit
+tacacs-server host 192.168.0.1
+tacacs-server host 192.168.0.2
+exit
+save
+
+conf t
+aaa group server tacacs+ ROUTERMNGT
+ server-private 10.35.175.1 key 7 071E2A401C504C011404
+ server-private 192.168.0.1 key 7 01020D080952530B225A
+ server-private 192.168.0.2 key 7 01020D080952530B225A
+exit
+tacacs server internet2
+ address ipv4 192.168.0.1
+ key 7 13331200321F572939773C32243118020F
+exit
+tacacs server internet3
+ address ipv4 192.168.0.2
+ key 7 13331200321F572939773C32243118020F
+exit
+exit
+save
+
+tacacs server LDAPTACACS
+ address ipv4 192.168.0.1
+ key VerYs3cr3taqskey  
