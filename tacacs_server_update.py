@@ -1,4 +1,3 @@
-
 line_break = "\r\n"
 line_end = "\r"
 vrp_cli_length = "screen-length 0 tempo"
@@ -27,10 +26,10 @@ def connectionkapici(ip):
     telnet = telnetlib.Telnet()
     # remote_connection = SSH.invoke_shell()
 
-    ldap_user = 'TCBAKAPIYOLDAS'
-    ldap_pass = 'QHAsg248'
-    tellcom = 'tellcom'
-    tellcompass = 'te11c0m'
+    ldap_user = 'test'
+    ldap_pass = 'test'
+    tellcom = 'test'
+    tellcompass = 'test'
     file1 = open("Cisco&Huawei-Telnet&SSH-LDAP3.txt", "a")
 
     try:
@@ -65,23 +64,23 @@ def connectionkapici(ip):
                         command.expect(huawei_sys_prompt)
                         command.send("hwtacacs-server template tacacs")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server authentication  176.235.18.193 third")
+                        command.send("hwtacacs-server authentication  192.168.0.1 third")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server authorization  176.235.18.193 third")
+                        command.send("hwtacacs-server authorization  192.168.0.1 third")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server accounting 176.235.18.193 third")
+                        command.send("hwtacacs-server accounting 192.168.0.1 third")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server authentication  176.235.18.193 sec")
+                        command.send("hwtacacs-server authentication  192.168.0.1 sec")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server authorization  176.235.18.193 sec")
+                        command.send("hwtacacs-server authorization  192.168.0.1 sec")
                         command.expect(huawei_sys_prompt)
-                        command.send("hwtacacs-server accounting 176.235.18.193 sec")
+                        command.send("hwtacacs-server accounting 192.168.0.1 sec")
                         command.expect(huawei_sys_prompt)
                         command.send("acl number 2307")
                         command.expect(huawei_sys_prompt)
-                        command.send("rule 170 permit source 176.235.18.193  0.0.0.0")
+                        command.send("rule 170 permit source 192.168.0.1  0.0.0.0")
                         command.expect(huawei_sys_prompt)
-                        command.send("rule 180 permit source 176.235.18.225 0.0.0.0")
+                        command.send("rule 180 permit source 192.168.0.2 0.0.0.0")
                         command.expect(huawei_sys_prompt)
                         command.send("q")
                         command.expect(huawei_sys_prompt)
@@ -99,15 +98,15 @@ def connectionkapici(ip):
                         command.expect(enable_prompt)
                         command.send('conf t')
                         command.expect(enable_prompt)
-                        command.send("tacacs-server host 176.235.18.193")
+                        command.send("tacacs-server host 192.168.0.1")
                         command.expect(enable_prompt)
-                        command.send("tacacs-server host 176.235.18.225")
+                        command.send("tacacs-server host 192.168.0.2")
                         command.expect(enable_prompt)
                         command.send("ip access-list standard VTY_ACL")
                         command.expect(enable_prompt)
-                        command.send("permit 176.235.18.193 0.0.0.0")
+                        command.send("permit 192.168.0.1 0.0.0.0")
                         command.expect(enable_prompt)
-                        command.send("permit 176.235.18.225 0.0.0.0")
+                        command.send("permit 192.168.0.2 0.0.0.0")
                         command.expect(enable_prompt)
                         command.send("end")
                         command.expect(enable_prompt)
@@ -140,23 +139,23 @@ def connectionkapici(ip):
                     command.expect(huawei_sys_prompt)
                     command.send("hwtacacs-server template tacacs")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server authentication  176.235.18.193 third")
+                    command.send("hwtacacs-server authentication  192.168.0.1 third")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server authorization  176.235.18.193 third")
+                    command.send("hwtacacs-server authorization  192.168.0.1 third")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server accounting 176.235.18.193 third")
+                    command.send("hwtacacs-server accounting 192.168.0.1 third")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server authentication  176.235.18.193 sec")
+                    command.send("hwtacacs-server authentication  192.168.0.1 sec")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server authorization  176.235.18.193 sec")
+                    command.send("hwtacacs-server authorization  192.168.0.1 sec")
                     command.expect(huawei_sys_prompt)
-                    command.send("hwtacacs-server accounting 176.235.18.193 sec")
+                    command.send("hwtacacs-server accounting 192.168.0.1 sec")
                     command.expect(huawei_sys_prompt)
                     command.send("acl number 2307")
                     command.expect(huawei_sys_prompt)
-                    command.send("rule 170 permit source 176.235.18.193  0.0.0.0")
+                    command.send("rule 170 permit source 192.168.0.1  0.0.0.0")
                     command.expect(huawei_sys_prompt)
-                    command.send("rule 180 permit source 176.235.18.225 0.0.0.0")
+                    command.send("rule 180 permit source 192.168.0.2 0.0.0.0")
                     command.expect(huawei_sys_prompt)
                     command.send("q")
                     command.expect(huawei_sys_prompt)
@@ -174,15 +173,15 @@ def connectionkapici(ip):
                     command.expect(enable_prompt)
                     command.send('conf t')
                     command.expect(enable_prompt)
-                    command.send("tacacs-server host 176.235.18.193")
+                    command.send("tacacs-server host 192.168.0.1")
                     command.expect(enable_prompt)
-                    command.send("tacacs-server host 176.235.18.225")
+                    command.send("tacacs-server host 192.168.0.2")
                     command.expect(enable_prompt)
                     command.send("ip access-list standard VTY_ACL")
                     command.expect(enable_prompt)
-                    command.send("permit 176.235.18.193 0.0.0.0")
+                    command.send("permit 192.168.0.1 0.0.0.0")
                     command.expect(enable_prompt)
-                    command.send("permit 176.235.18.225 0.0.0.0")
+                    command.send("permit 192.168.0.2 0.0.0.0")
                     command.expect(enable_prompt)
                     command.send("end")
                     command.expect(enable_prompt)
@@ -201,35 +200,4 @@ def connectionkapici(ip):
         print(Error)
     return 0
 
-
-sira = Queue()
-
-
-def worker(q):
-    while True:
-        q = sira.get()
-        connectionkapici(q)
-        sira.task_done()
-
-
-def sshThread():
-    with open('iplist.txt') as f:
-        content = f.readlines()
-    ip_list = [x.strip() for x in content]
-
-    for i in range(10):
-        trd = threading.Thread(target=worker, args=(sira,))
-        trd.setDaemon(True)
-        trd.start()
-
-    for ip in ip_list:
-        sira.put(ip)
-    sira.join()
-
-
-if __name__ == '__main__':
-    sshThread()
-
 sys.exit()
-
-##barka##
